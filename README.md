@@ -21,11 +21,15 @@
 
 - Should Keg be component or just a object from the database?
 
+- Which dependencies needs to be injected to use font-awesome?
+
 2. Difference between Angular and React
 
 - Routing is descriptive at the entry point, just router-outlet vs. Switching through routes with redirecting options.
 
 - Area handled by one component in Angular can be account for several components in React.
+
+- Since React uses jsx files, there should be specific configuration about babel compiling, and set up accordingly in order to use ES6 syntax.
 
 ## Support and contact details
 
