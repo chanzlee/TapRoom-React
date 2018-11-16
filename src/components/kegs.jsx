@@ -4,4 +4,4 @@ const Kegs = () => {
   return null;
 };
 
-export default Knull;
+export default Kegs;
