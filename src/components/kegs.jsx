@@ -8,11 +8,14 @@ class Kegs extends React.Component {
     super(props);
     this.state = {
       kegList: getKegList(),
-      keg: {}
+      keg: {},
+      newKeg: { name: "", brewer: "", price: 0, abv: 0, remaining: 120 }
     };
 
     this.handleLike = this.handleLike.bind(this);
     this.handleSell = this.handleSell.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
@@ -37,6 +40,8 @@ class Kegs extends React.Component {
               <td>{keg.name}</td>
               <td>{keg.brewer}</td>
               <td>{keg.abv}</td>
+
+              {/* Color-coded price conditional to > $7 */}
               {keg.price >= 7 ? (
                 <td>
                   <span className="text-white bg-dark">
@@ -46,6 +51,8 @@ class Kegs extends React.Component {
               ) : (
                 <td>&nbsp;${keg.price}&nbsp;</td>
               )}
+
+              {/* Color-coded remaining conditional to < 10 */}
               {keg.remaining < 10 ? (
                 <td>
                   <span className="text-danger">
@@ -55,6 +62,7 @@ class Kegs extends React.Component {
               ) : (
                 <td>&nbsp;&nbsp;{keg.remaining}</td>
               )}
+
               <td>
                 <Like liked={keg.liked} onClick={() => this.handleLike(keg)} />
               </td>
@@ -67,6 +75,41 @@ class Kegs extends React.Component {
             </tr>
           ))}
         </tbody>
+        <div style={{ position: "absolute", right: 50, marginTop: 50 }}>
+          <form onSubmit={e => this.handleAdd(e)}>
+            <input
+              type="text"
+              id="name"
+              placeholder="Name"
+              onChange={e => this.handleChange(e)}
+              value={this.state.newKeg.name}
+            />
+            <input
+              type="text"
+              id="brewer"
+              placeholder="Brewer"
+              onChange={e => this.handleChange(e)}
+              value={this.state.newKeg.brewer}
+            />
+            <input
+              type="text"
+              id="abv"
+              placeholder="Alcohol %"
+              onChange={e => this.handleChange(e)}
+              value={this.state.newKeg.abv}
+            />
+            <input
+              type="text"
+              id="price"
+              placeholder="Price"
+              onChange={e => this.handleChange(e)}
+              value={this.state.newKeg.price}
+            />
+            <button type="submit" className="btn btn-success btn-sm">
+              Add New Keg
+            </button>
+          </form>
+        </div>
       </table>
     );
   }
@@ -86,6 +129,20 @@ class Kegs extends React.Component {
     newKeg.remaining--;
     newKegList[index] = newKeg;
     this.setState({ kegList: newKegList });
+  }
+
+  handleAdd(event) {
+    event.preventDefault();
+    let newKegList = this.state.kegList.slice();
+    let newKeg = this.state.newKeg;
+    newKegList.push(newKeg);
+    this.setState({ kegList: newKegList });
+  }
+
+  handleChange(event) {
+    const newKeg = this.state.newKeg;
+    newKeg[event.currentTarget.id] = event.currentTarget.value;
+    this.setState({ newKeg: newKeg });
   }
 }
 
