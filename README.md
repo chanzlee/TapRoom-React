@@ -19,9 +19,13 @@
 
 1. Unforeseen issues / Quesrtions
 
+- Should Keg be component or just a object from the database?
+
 2. Difference between Angular and React
 
 - Routing is descriptive at the entry point, just router-outlet vs. Switching through routes with redirecting options.
+
+- Area handled by one component in Angular can be account for several components in React.
 
 ## Support and contact details
 
