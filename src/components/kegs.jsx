@@ -6,8 +6,10 @@ class Kegs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      kegs: getKegList()
+      kegList: getKegList()
     };
+
+    this.handleLike = this.handleLike.bind(this);
   }
 
   render() {
@@ -25,7 +27,7 @@ class Kegs extends React.Component {
         </thead>
 
         <tbody>
-          {kegs.map((keg, index) => (
+          {this.state.kegList.map((keg, index) => (
             <tr key={index}>
               <td>{keg.name}</td>
               <td>{keg.brewer}</td>
@@ -45,13 +47,13 @@ class Kegs extends React.Component {
     );
   }
 
-  handleLike = keg => {
-    const kegList = [...this.state.kegList];
+  handleLike(keg) {
+    const newKegList = this.state.kegList.slice();
     const index = kegList.indexOf(keg);
-    kegList[index] = { ...keg };
-    kegList[index].liked = !kegList[index].liked;
-    this.setState({ movies });
-  };
+    newKegList[index] = keg;
+    newKegList[index].liked = !newKegList[index].liked;
+    this.setState({ kegList: newKegList });
+  }
 }
 
 export default Kegs;
