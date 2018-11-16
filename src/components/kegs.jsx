@@ -16,6 +16,7 @@ class Kegs extends React.Component {
     this.handleSell = this.handleSell.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   render() {
@@ -70,7 +71,12 @@ class Kegs extends React.Component {
                 <Sell onClick={() => this.handleSell(keg)} />
               </td>
               <td>
-                <button className="btn btn-danger btn-sm">Delete</button>
+                <button
+                  onClick={() => this.handleDelete(keg)}
+                  className="btn btn-danger btn-sm"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
@@ -140,9 +146,16 @@ class Kegs extends React.Component {
   }
 
   handleChange(event) {
-    const newKeg = this.state.newKeg;
+    let newKeg = this.state.newKeg;
     newKeg[event.currentTarget.id] = event.currentTarget.value;
     this.setState({ newKeg: newKeg });
+  }
+
+  handleDelete(keg) {
+    let newKegList = this.state.kegList.filter(
+      k => k.name !== keg.name || k.brewer !== keg.brewer
+    );
+    this.setState({ kegList: newKegList });
   }
 }
 
