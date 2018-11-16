@@ -1,7 +1,7 @@
 import React from "react";
 
 const Kegs = () => {
-  return null;
+  return <h1>Kegs</h1>;
 };
 
 export default Kegs;
