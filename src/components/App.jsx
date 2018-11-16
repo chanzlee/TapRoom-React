@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 //import PropTypes from 'prop-types';
-import { Switch, Route, Redirect } from "react-router-dom";
-import Admin from "./admin";
-import Home from "./home";
-import NavBar from "./navbar";
-import Store from "./store";
-import NotFound from "./notFound";
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Admin from './admin';
+import Home from './home';
+import NavBar from './navbar';
+import Store from './store';
+import NotFound from './notFound';
 
 /*
   import { Link } from 'react-router-dom';
