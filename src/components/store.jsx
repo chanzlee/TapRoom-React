@@ -1,7 +1,13 @@
 import React from "react";
+import Kegs from "./kegs";
 
 const Store = () => {
-  return <h1>Store</h1>;
+  return (
+    <div>
+      <h1>Store</h1>
+      <Kegs />
+    </div>
+  );
 };
 
 export default Store;
