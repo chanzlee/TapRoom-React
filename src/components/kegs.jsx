@@ -49,7 +49,7 @@ class Kegs extends React.Component {
 
   handleLike(keg) {
     const newKegList = this.state.kegList.slice();
-    const index = kegList.indexOf(keg);
+    const index = this.state.kegList.indexOf(keg);
     newKegList[index] = keg;
     newKegList[index].liked = !newKegList[index].liked;
     this.setState({ kegList: newKegList });
