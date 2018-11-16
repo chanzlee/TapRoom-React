@@ -5,16 +5,9 @@ import React from "react";
 
 const Like = props => {
   let classes = "fa fa-thumbs-o-up";
-  if (props.liked) classes += " blue";
+  if (props.liked) classes += " text-primary";
   return (
     <span>
-      <style jsx>
-        {`
-          .blue {
-            color: blue;
-          }
-        `}
-      </style>
       <i
         style={{ cursor: "pointer", fontSize: 23, fontWeight: 700 }}
         onClick={props.onClick}

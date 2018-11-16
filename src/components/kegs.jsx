@@ -37,8 +37,24 @@ class Kegs extends React.Component {
               <td>{keg.name}</td>
               <td>{keg.brewer}</td>
               <td>{keg.abv}</td>
-              <td>{keg.price}</td>
-              <td>{keg.remaining}</td>
+              {keg.price >= 7 ? (
+                <td>
+                  <span className="text-white bg-dark">
+                    &nbsp;${keg.price}&nbsp;
+                  </span>
+                </td>
+              ) : (
+                <td>&nbsp;${keg.price}&nbsp;</td>
+              )}
+              {keg.remaining < 10 ? (
+                <td>
+                  <span className="text-danger">
+                    &nbsp;&nbsp;{keg.remaining}&nbsp;
+                  </span>
+                </td>
+              ) : (
+                <td>&nbsp;&nbsp;{keg.remaining}</td>
+              )}
               <td>
                 <Like liked={keg.liked} onClick={() => this.handleLike(keg)} />
               </td>
