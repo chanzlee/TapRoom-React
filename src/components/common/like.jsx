@@ -16,7 +16,7 @@ const Like = props => {
         `}
       </style>
       <i
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", fontSize: 23, fontWeight: 700 }}
         onClick={props.onClick}
         className={classes}
         aria-hidden="true"

@@ -26,7 +26,7 @@ class Kegs extends React.Component {
             <th>Price</th>
             <th>Remaining</th>
             <th>Like</th>
-            <th>S</th>
+            <th>Sell</th>
             <th />
           </tr>
         </thead>
