@@ -1,15 +1,18 @@
 import React from "react";
 import { getKegList } from "../services/kegService";
 import Like from "./common/like";
+import Sell from "./common/sell";
 
 class Kegs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      kegList: getKegList()
+      kegList: getKegList(),
+      keg: {}
     };
 
     this.handleLike = this.handleLike.bind(this);
+    this.handleSell = this.handleSell.bind(this);
   }
 
   render() {
@@ -22,6 +25,8 @@ class Kegs extends React.Component {
             <th>Abv</th>
             <th>Price</th>
             <th>Remaining</th>
+            <th>Like</th>
+            <th>S</th>
             <th />
           </tr>
         </thead>
@@ -38,6 +43,9 @@ class Kegs extends React.Component {
                 <Like liked={keg.liked} onClick={() => this.handleLike(keg)} />
               </td>
               <td>
+                <Sell onClick={() => this.handleSell(keg)} />
+              </td>
+              <td>
                 <button className="btn btn-danger btn-sm">Delete</button>
               </td>
             </tr>
@@ -48,10 +56,19 @@ class Kegs extends React.Component {
   }
 
   handleLike(keg) {
-    const newKegList = this.state.kegList.slice();
-    const index = this.state.kegList.indexOf(keg);
+    let newKegList = this.state.kegList.slice();
+    let index = this.state.kegList.indexOf(keg);
     newKegList[index] = keg;
     newKegList[index].liked = !newKegList[index].liked;
+    this.setState({ kegList: newKegList });
+  }
+
+  handleSell(keg) {
+    let newKegList = this.state.kegList.slice();
+    let index = this.state.kegList.indexOf(keg);
+    let newKeg = keg;
+    newKeg.remaining--;
+    newKegList[index] = newKeg;
     this.setState({ kegList: newKegList });
   }
 }
