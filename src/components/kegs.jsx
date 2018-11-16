@@ -40,7 +40,15 @@ class Kegs extends React.Component {
             <tr key={index}>
               <td>{keg.name}</td>
               <td>{keg.brewer}</td>
-              <td>{keg.abv}</td>
+
+              {/* underline abv conditional to > 6.5 */}
+              {keg.abv > 6.5 ? (
+                <td>
+                  <span className="text-danger bg-dark">{keg.abv}%</span>
+                </td>
+              ) : (
+                <td>{keg.abv}%</td>
+              )}
 
               {/* Color-coded price conditional to > $7 */}
               {keg.price >= 7 ? (
