@@ -36,7 +36,8 @@ class Kegs extends React.Component {
               <th>Price</th>
               <th>Remaining</th>
               <th>Like</th>
-              <th>Sell</th>
+              <th />
+              <th />
               <th />
             </tr>
           </thead>
@@ -89,7 +90,16 @@ class Kegs extends React.Component {
                   />
                 </td>
                 <td>
-                  <Sell onClick={() => this.handleSell(keg)} />
+                  <Sell
+                    product="pint"
+                    onClick={() => this.handleSell(keg, 1)}
+                  />
+                </td>
+                <td>
+                  <Sell
+                    product="growler"
+                    onClick={() => this.handleSell(keg, 2)}
+                  />
                 </td>
                 <td>
                   <button
@@ -129,11 +139,11 @@ class Kegs extends React.Component {
     this.setState({ kegList: newKegList });
   }
 
-  handleSell(keg) {
+  handleSell(keg, amount) {
     let newKegList = this.state.kegList.slice();
     let index = this.state.kegList.indexOf(keg);
     let newKeg = keg;
-    newKeg.remaining--;
+    newKeg.remaining -= amount;
     newKegList[index] = newKeg;
     this.setState({ kegList: newKegList });
   }
