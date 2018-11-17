@@ -34,6 +34,10 @@ Static website for the bar to to sell & manage kegs using React.
 
 - NgIf of Angular goes inside the tag as "property binding" but corresponding functionality can be done by ternary operator in React, outside the DOM element.
 
+- Angular enables two way binding, but React is allows only one way binding, parent to child.
+
+- Since Angular developed on MVC while React only has View of MVC, react becomes verbose as it became hard to incorporate Model and Component.
+
 ## Support and contact details
 
 chanethanlee@gmail.com
