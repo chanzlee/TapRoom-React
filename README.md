@@ -16,6 +16,29 @@ Static website for the bar to to sell & manage kegs using React.
 - Kegs prices are color-coded for easy readability, based on their price (greater than \$7) or the particular style of beer or kombucha.
 - Alcohol content property will also be color-coded to display stronger beers differently than weaker beers.
 
+## Setup/Installation Requirements
+
+1.
+
+```
+    // navigate into directory
+    > cd TapRoom-React
+```
+
+2.
+
+```
+    // install dependent plugins
+    > npm install
+```
+
+3.
+
+```
+    // start application
+    > ng run start
+```
+
 ## Project Prompt
 
 1. Unforeseen issues / Questions
@@ -37,6 +60,26 @@ Static website for the bar to to sell & manage kegs using React.
 - Angular enables two way binding, but React is allows only one way binding, parent to child.
 
 - Since Angular developed on MVC while React only has View of MVC, react becomes verbose as it became hard to incorporate Model and Component.
+
+## Components
+
+- Navigation bar
+- Store
+- Kegs
+- newKegForm
+- Admin
+- Employee
+- Common component: Like/ Modal/ Sell
+
+## Technologies Used
+
+- React
+- Node
+- Webpack
+- ESLint
+- Bootstrap
+- Babel
+- Styled JSX
 
 ## Support and contact details
 
