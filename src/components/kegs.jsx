@@ -3,6 +3,7 @@ import { getKegList } from "../services/kegService";
 import Like from "./common/like";
 import Sell from "./common/sell";
 import Modal from "./common/modal";
+import NewKegForm from "./newKegForm";
 
 class Kegs extends React.Component {
   constructor(props) {
@@ -93,45 +94,14 @@ class Kegs extends React.Component {
             </tr>
           ))}
         </tbody>
-        <div style={{ position: "absolute", right: 50, marginTop: 50 }}>
-          <form onSubmit={e => this.handleAdd(e)}>
-            <input
-              type="text"
-              id="name"
-              placeholder="Name"
-              onChange={e => this.handleChange(e)}
-              value={this.state.newKeg.name}
-            />
-            <input
-              type="text"
-              id="brewer"
-              placeholder="Brewer"
-              onChange={e => this.handleChange(e)}
-              value={this.state.newKeg.brewer}
-            />
-            <input
-              type="text"
-              id="abv"
-              placeholder="Alcohol %"
-              onChange={e => this.handleChange(e)}
-              value={this.state.newKeg.abv}
-            />
-            <input
-              type="text"
-              id="price"
-              placeholder="Price"
-              onChange={e => this.handleChange(e)}
-              value={this.state.newKeg.price}
-            />
-            <button type="submit" className="btn btn-success btn-sm">
-              Add New Keg
-            </button>
-          </form>
-        </div>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
-          <p>Modal</p>
-          <p>Data</p>
-        </Modal>
+
+        <Modal
+          show={this.state.show}
+          handleClose={this.hideModal}
+          onSubmit={e => this.handleAdd(e)}
+          onChange={e => this.handleChange(e)}
+          newKeg={this.state.newKeg}
+        />
         <button
           className="btn btn-info btn-sm"
           type="button"
@@ -169,6 +139,7 @@ class Kegs extends React.Component {
     this.setState({
       newKeg: { name: "", brewer: "", price: "", abv: "", remaining: 120 }
     });
+    this.setState({ show: false });
   }
 
   handleChange(event) {
@@ -185,12 +156,10 @@ class Kegs extends React.Component {
   }
 
   showModal() {
-    console.log("clicked");
     this.setState({ show: true });
   }
 
   hideModal() {
-    console.log("clicked");
     this.setState({ show: false });
   }
 }
