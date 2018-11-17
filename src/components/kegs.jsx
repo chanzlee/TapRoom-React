@@ -121,7 +121,8 @@ class Kegs extends React.Component {
           newKeg={this.state.newKeg}
         />
         <button
-          className="btn btn-info btn-sm"
+          style={{ float: "right" }}
+          className="btn btn-info btn-sm mr-3"
           type="button"
           onClick={this.showModal}
         >
