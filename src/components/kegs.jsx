@@ -2,6 +2,7 @@ import React from "react";
 import { getKegList } from "../services/kegService";
 import Like from "./common/like";
 import Sell from "./common/sell";
+import Modal from "./common/modal";
 
 class Kegs extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class Kegs extends React.Component {
     this.state = {
       kegList: getKegList(),
       keg: {},
-      newKeg: { name: "", brewer: "", price: "", abv: "", remaining: 120 }
+      newKeg: { name: "", brewer: "", price: "", abv: "", remaining: 120 },
+      show: false
     };
 
     this.handleLike = this.handleLike.bind(this);
@@ -17,6 +19,8 @@ class Kegs extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   render() {
@@ -124,6 +128,17 @@ class Kegs extends React.Component {
             </button>
           </form>
         </div>
+        <Modal show={this.state.show} handleClose={this.hideModal}>
+          <p>Modal</p>
+          <p>Data</p>
+        </Modal>
+        <button
+          className="btn btn-info btn-sm"
+          type="button"
+          onClick={this.showModal}
+        >
+          Add New Keg
+        </button>
       </table>
     );
   }
@@ -167,6 +182,16 @@ class Kegs extends React.Component {
       k => k.name !== keg.name || k.brewer !== keg.brewer
     );
     this.setState({ kegList: newKegList });
+  }
+
+  showModal() {
+    console.log("clicked");
+    this.setState({ show: true });
+  }
+
+  hideModal() {
+    console.log("clicked");
+    this.setState({ show: false });
   }
 }
 
