@@ -1,7 +1,7 @@
-import React from 'react';
-import { getKegList } from '../services/kegService';
-import Like from './common/like';
-import Sell from './common/sell';
+import React from "react";
+import { getKegList } from "../services/kegService";
+import Like from "./common/like";
+import Sell from "./common/sell";
 
 class Kegs extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class Kegs extends React.Component {
     this.state = {
       kegList: getKegList(),
       keg: {},
-      newKeg: { name: '', brewer: '', price: 0, abv: 0, remaining: 120 }
+      newKeg: { name: "", brewer: "", price: 0, abv: 0, remaining: 120 }
     };
 
     this.handleLike = this.handleLike.bind(this);
@@ -89,7 +89,7 @@ class Kegs extends React.Component {
             </tr>
           ))}
         </tbody>
-        <div style={{ position: 'absolute', right: 50, marginTop: 50 }}>
+        <div style={{ position: "absolute", right: 50, marginTop: 50 }}>
           <form onSubmit={e => this.handleAdd(e)}>
             <input
               type="text"

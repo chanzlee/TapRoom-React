@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Sell = props => {
   return (
@@ -10,6 +11,10 @@ const Sell = props => {
       </button>
     </span>
   );
+};
+
+Sell.propTypes = {
+  onClick: PropTypes.func.isRequired
 };
 
 export default Sell;

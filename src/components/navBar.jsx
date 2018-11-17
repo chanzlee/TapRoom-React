@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
     //Import bootstrap format
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
-        Tap Room
+        SeaTap
       </Link>
       <button
         className="navbar-toggler"

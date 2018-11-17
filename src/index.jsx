@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-import { AppContainer } from 'react-hot-loader';
-import { HashRouter } from 'react-router-dom';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/font-awesome/css/font-awesome.min.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/App";
+import { AppContainer } from "react-hot-loader";
+import { HashRouter } from "react-router-dom";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/font-awesome/css/font-awesome.min.css";
 
 const render = Component => {
   ReactDOM.render(
@@ -13,7 +13,7 @@ const render = Component => {
         <Component />
       </HashRouter>
     </AppContainer>,
-    document.getElementById('react-app-root')
+    document.getElementById("react-app-root")
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 //Input like: boolean
 //Output raise Onclick event
@@ -16,6 +17,11 @@ const Like = props => {
       />
     </span>
   );
+};
+
+Like.propTypes = {
+  liked: PropTypes.bool,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Like;

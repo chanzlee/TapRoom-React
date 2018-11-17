@@ -1,5 +1,5 @@
-import React from 'react';
-import Kegs from './kegs';
+import React from "react";
+import Kegs from "./kegs";
 
 const Store = () => {
   return (

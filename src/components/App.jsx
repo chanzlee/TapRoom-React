@@ -17,7 +17,7 @@ function App() {
     <div>
       <NavBar />
       <div className="jumbotron">
-        <h1>TapRoom-React</h1>
+        <h1>SeaTap</h1>
       </div>
       <div className="container">
         <Switch>
