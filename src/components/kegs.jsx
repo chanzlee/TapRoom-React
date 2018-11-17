@@ -26,75 +26,79 @@ class Kegs extends React.Component {
 
   render() {
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Brewer</th>
-            <th>Abv</th>
-            <th>Price</th>
-            <th>Remaining</th>
-            <th>Like</th>
-            <th>Sell</th>
-            <th />
-          </tr>
-        </thead>
-
-        <tbody>
-          {this.state.kegList.map((keg, index) => (
-            <tr key={index}>
-              <td>{keg.name}</td>
-              <td>{keg.brewer}</td>
-
-              {/* underline abv conditional to > 6.5 */}
-              {keg.abv > 6.5 ? (
-                <td>
-                  <span className="text-danger bg-dark">{keg.abv}%</span>
-                </td>
-              ) : (
-                <td>{keg.abv}%</td>
-              )}
-
-              {/* Color-coded price conditional to > $7 */}
-              {keg.price >= 7 ? (
-                <td>
-                  <span className="text-white bg-dark">
-                    &nbsp;${keg.price}&nbsp;
-                  </span>
-                </td>
-              ) : (
-                <td>&nbsp;${keg.price}&nbsp;</td>
-              )}
-
-              {/* Color-coded remaining conditional to < 10 */}
-              {keg.remaining < 10 ? (
-                <td>
-                  <span className="text-danger">
-                    &nbsp;&nbsp;{keg.remaining}&nbsp;
-                  </span>
-                </td>
-              ) : (
-                <td>&nbsp;&nbsp;{keg.remaining}</td>
-              )}
-
-              <td>
-                <Like liked={keg.liked} onClick={() => this.handleLike(keg)} />
-              </td>
-              <td>
-                <Sell onClick={() => this.handleSell(keg)} />
-              </td>
-              <td>
-                <button
-                  onClick={() => this.handleDelete(keg)}
-                  className="btn btn-danger btn-sm"
-                >
-                  Delete
-                </button>
-              </td>
+      <div>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Brewer</th>
+              <th>Abv</th>
+              <th>Price</th>
+              <th>Remaining</th>
+              <th>Like</th>
+              <th>Sell</th>
+              <th />
             </tr>
-          ))}
-        </tbody>
+          </thead>
 
+          <tbody>
+            {this.state.kegList.map((keg, index) => (
+              <tr key={index}>
+                <td>{keg.name}</td>
+                <td>{keg.brewer}</td>
+
+                {/* underline abv conditional to > 6.5 */}
+                {keg.abv > 6.5 ? (
+                  <td>
+                    <span className="text-danger bg-dark">{keg.abv}%</span>
+                  </td>
+                ) : (
+                  <td>{keg.abv}%</td>
+                )}
+
+                {/* Color-coded price conditional to > $7 */}
+                {keg.price >= 7 ? (
+                  <td>
+                    <span className="text-white bg-dark">
+                      &nbsp;${keg.price}&nbsp;
+                    </span>
+                  </td>
+                ) : (
+                  <td>&nbsp;${keg.price}&nbsp;</td>
+                )}
+
+                {/* Color-coded remaining conditional to < 10 */}
+                {keg.remaining < 10 ? (
+                  <td>
+                    <span className="text-danger">
+                      &nbsp;&nbsp;{keg.remaining}&nbsp;
+                    </span>
+                  </td>
+                ) : (
+                  <td>&nbsp;&nbsp;{keg.remaining}</td>
+                )}
+
+                <td>
+                  <Like
+                    liked={keg.liked}
+                    onClick={() => this.handleLike(keg)}
+                  />
+                </td>
+                <td>
+                  <Sell onClick={() => this.handleSell(keg)} />
+                </td>
+                <td>
+                  <button
+                    onClick={() => this.handleDelete(keg)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <Modal
           show={this.state.show}
           handleClose={this.hideModal}
@@ -109,7 +113,7 @@ class Kegs extends React.Component {
         >
           Add New Keg
         </button>
-      </table>
+      </div>
     );
   }
 
