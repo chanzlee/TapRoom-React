@@ -9,7 +9,7 @@ class Kegs extends React.Component {
     this.state = {
       kegList: getKegList(),
       keg: {},
-      newKeg: { name: "", brewer: "", price: 0, abv: 0, remaining: 120 }
+      newKeg: { name: "", brewer: "", price: "", abv: "", remaining: 120 }
     };
 
     this.handleLike = this.handleLike.bind(this);
@@ -151,6 +151,9 @@ class Kegs extends React.Component {
     let newKeg = this.state.newKeg;
     newKegList.push(newKeg);
     this.setState({ kegList: newKegList });
+    this.setState({
+      newKeg: { name: "", brewer: "", price: "", abv: "", remaining: 120 }
+    });
   }
 
   handleChange(event) {
