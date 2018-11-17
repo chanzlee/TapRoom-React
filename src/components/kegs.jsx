@@ -32,7 +32,7 @@ class Kegs extends React.Component {
             <tr>
               <th>Name</th>
               <th>Brewer</th>
-              <th>Abv</th>
+              <th>Alcohol(%)</th>
               <th>Price</th>
               <th>Remaining</th>
               <th>Like</th>
@@ -50,32 +50,36 @@ class Kegs extends React.Component {
                 {/* underline abv conditional to > 6.5 */}
                 {keg.abv > 6.5 ? (
                   <td>
-                    <span className="text-danger bg-dark">{keg.abv}%</span>
+                    <span className="text-danger bg-dark px-3">{keg.abv}%</span>
                   </td>
                 ) : (
-                  <td>{keg.abv}%</td>
+                  <td>
+                    <span className="px-3">{keg.abv}%</span>
+                  </td>
                 )}
 
                 {/* Color-coded price conditional to > $7 */}
                 {keg.price >= 7 ? (
                   <td>
-                    <span className="text-white bg-dark">
-                      &nbsp;${keg.price}&nbsp;
+                    <span className="text-white bg-dark px-3">
+                      ${keg.price}
                     </span>
                   </td>
                 ) : (
-                  <td>&nbsp;${keg.price}&nbsp;</td>
+                  <td>
+                    <span className="px-3">${keg.price}</span>
+                  </td>
                 )}
 
                 {/* Color-coded remaining conditional to < 10 */}
                 {keg.remaining < 10 ? (
                   <td>
-                    <span className="text-danger">
-                      &nbsp;&nbsp;{keg.remaining}&nbsp;
-                    </span>
+                    <span className="text-danger px-3">{keg.remaining}</span>
                   </td>
                 ) : (
-                  <td>&nbsp;&nbsp;{keg.remaining}</td>
+                  <td>
+                    <span className="px-3">{keg.remaining}</span>
+                  </td>
                 )}
 
                 <td>
