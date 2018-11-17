@@ -20,7 +20,7 @@ const Modal = props => {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Modal title</h5>
+              <h5 className="modal-title">{props.title}</h5>
             </div>
             <div className="modal-body">
               <NewKegForm

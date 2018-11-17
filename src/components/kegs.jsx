@@ -114,6 +114,7 @@ class Kegs extends React.Component {
           </tbody>
         </table>
         <Modal
+          title="New Keg"
           show={this.state.show}
           handleClose={this.hideModal}
           onSubmit={e => this.handleAdd(e)}
