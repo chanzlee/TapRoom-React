@@ -27,8 +27,8 @@ const NavBar = () => {
           <NavLink className="nav-item nav-link" to="/admin">
             Admin
           </NavLink>
-          <NavLink className="nav-item nav-link" to="#">
-            About
+          <NavLink className="nav-item nav-link" to="/employee">
+            Employee
           </NavLink>
         </div>
       </div>

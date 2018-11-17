@@ -3,7 +3,6 @@ import { getKegList } from "../services/kegService";
 import Like from "./common/like";
 import Sell from "./common/sell";
 import Modal from "./common/modal";
-import NewKegForm from "./newKegForm";
 
 class Kegs extends React.Component {
   constructor(props) {

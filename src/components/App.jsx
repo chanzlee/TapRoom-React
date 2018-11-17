@@ -5,6 +5,7 @@ import Admin from "./admin";
 // import Home from './home';
 import NavBar from "./navbar";
 import Store from "./store";
+import Employee from "./employee";
 import NotFound from "./notFound";
 
 /*
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route path="/store" component={Store} />
           <Route path="/admin" component={Admin} />
+          <Route path="/employee" component={Employee} />
           <Route path="/not-found" component={NotFound} />
           {/* <Route exact path="/" component={Home} /> */}
           <Redirect exact from="/" to="/store" />
