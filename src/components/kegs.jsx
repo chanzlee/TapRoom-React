@@ -4,6 +4,7 @@ import Like from "./common/like";
 import Sell from "./common/sell";
 import Modal from "./common/modal";
 import NewKegForm from "./newKegForm";
+import DeleteConfirm from "./DeleteConfirm";
 import Keg from "../model/keg";
 
 class Kegs extends React.Component {
@@ -13,7 +14,9 @@ class Kegs extends React.Component {
       kegList: getKegList(),
       keg: {},
       newKeg: new Keg(),
-      addModalShow: false
+      deletingKeg: new Keg(),
+      addModalShow: false,
+      deleteModalShow: false
     };
 
     this.handleLike = this.handleLike.bind(this);
@@ -23,6 +26,8 @@ class Kegs extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.showAddModal = this.showAddModal.bind(this);
     this.hideAddModal = this.hideAddModal.bind(this);
+    this.showDeleteModal = this.showDeleteModal.bind(this);
+    this.hideDeleteModal = this.hideDeleteModal.bind(this);
   }
 
   render() {
@@ -104,7 +109,7 @@ class Kegs extends React.Component {
                 </td>
                 <td>
                   <button
-                    onClick={() => this.handleDelete(keg)}
+                    onClick={() => this.showDeleteModal(keg)}
                     className="btn btn-danger btn-sm"
                   >
                     Delete
@@ -126,6 +131,20 @@ class Kegs extends React.Component {
             />
           }
         />
+
+        <Modal
+          title="Delete Keg"
+          show={this.state.deleteModalShow}
+          handleClose={this.hideDeleteModal}
+          modalTarget={
+            <DeleteConfirm
+              name={this.state.deletingKeg.name}
+              handleClose={() => this.hideDeleteModal()}
+              onDelete={() => this.handleDelete(this.state.deletingKeg)}
+            />
+          }
+        />
+
         <button
           style={{ float: "right" }}
           className="btn btn-info btn-sm mr-3"
@@ -177,7 +196,7 @@ class Kegs extends React.Component {
     let newKegList = this.state.kegList.filter(
       k => k.name !== keg.name || k.brewer !== keg.brewer
     );
-    this.setState({ kegList: newKegList });
+    this.setState({ kegList: newKegList, deleteModalShow: false });
   }
 
   showAddModal() {
@@ -186,6 +205,14 @@ class Kegs extends React.Component {
 
   hideAddModal() {
     this.setState({ addModalShow: false });
+  }
+
+  showDeleteModal(keg) {
+    this.setState({ deleteModalShow: true, deletingKeg: keg });
+  }
+
+  hideDeleteModal() {
+    this.setState({ deleteModalShow: false });
   }
 }
 
