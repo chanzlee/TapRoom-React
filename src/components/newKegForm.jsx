@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const NewKegForm = props => {
   return (
@@ -55,6 +56,12 @@ const NewKegForm = props => {
       </form>
     </div>
   );
+};
+
+NewKegForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  newKeg: PropTypes.object
 };
 
 export default NewKegForm;

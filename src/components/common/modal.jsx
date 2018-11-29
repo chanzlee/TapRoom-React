@@ -1,5 +1,4 @@
 import React from "react";
-import NewKegForm from "../newKegForm";
 // import PropTypes from "prop-types";
 
 const Modal = props => {
@@ -22,13 +21,7 @@ const Modal = props => {
             <div className="modal-header">
               <h5 className="modal-title">{props.title}</h5>
             </div>
-            <div className="modal-body">
-              <NewKegForm
-                onSubmit={props.onSubmit}
-                onChange={props.onChange}
-                newKeg={props.newKeg}
-              />
-            </div>
+            <div className="modal-body">{props.modalTarget}</div>
             <div className="modal-footer">
               <button
                 type="button"

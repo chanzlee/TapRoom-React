@@ -3,6 +3,8 @@ import { getKegList } from "../services/kegService";
 import Like from "./common/like";
 import Sell from "./common/sell";
 import Modal from "./common/modal";
+import NewKegForm from "./newKegForm";
+import Keg from "../model/keg";
 
 class Kegs extends React.Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class Kegs extends React.Component {
     this.state = {
       kegList: getKegList(),
       keg: {},
-      newKeg: { name: "", brewer: "", price: "", abv: "", remaining: 120 },
+      newKeg: new Keg(),
       show: false
     };
 
@@ -116,9 +118,13 @@ class Kegs extends React.Component {
           title="New Keg"
           show={this.state.show}
           handleClose={this.hideModal}
-          onSubmit={e => this.handleAdd(e)}
-          onChange={e => this.handleChange(e)}
-          newKeg={this.state.newKeg}
+          modalTarget={
+            <NewKegForm
+              onSubmit={e => this.handleAdd(e)}
+              onChange={e => this.handleChange(e)}
+              newKeg={this.state.newKeg}
+            />
+          }
         />
         <button
           style={{ float: "right" }}
@@ -156,7 +162,7 @@ class Kegs extends React.Component {
     newKegList.push(newKeg);
     this.setState({ kegList: newKegList });
     this.setState({
-      newKeg: { name: "", brewer: "", price: "", abv: "", remaining: 120 }
+      newKeg: new Keg()
     });
     this.setState({ show: false });
   }
