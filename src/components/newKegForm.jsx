@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const NewKegForm = props => {
+  // const {name, brewer,}
   return (
     <div>
       <form onSubmit={props.onSubmit}>

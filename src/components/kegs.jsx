@@ -13,7 +13,7 @@ class Kegs extends React.Component {
       kegList: getKegList(),
       keg: {},
       newKeg: new Keg(),
-      show: false
+      addModalShow: false
     };
 
     this.handleLike = this.handleLike.bind(this);
@@ -21,8 +21,8 @@ class Kegs extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
+    this.showAddModal = this.showAddModal.bind(this);
+    this.hideAddModal = this.hideAddModal.bind(this);
   }
 
   render() {
@@ -116,8 +116,8 @@ class Kegs extends React.Component {
         </table>
         <Modal
           title="New Keg"
-          show={this.state.show}
-          handleClose={this.hideModal}
+          show={this.state.addModalShow}
+          handleClose={this.hideAddModal}
           modalTarget={
             <NewKegForm
               onSubmit={e => this.handleAdd(e)}
@@ -130,7 +130,7 @@ class Kegs extends React.Component {
           style={{ float: "right" }}
           className="btn btn-info btn-sm mr-3"
           type="button"
-          onClick={this.showModal}
+          onClick={this.showAddModal}
         >
           Add New Keg
         </button>
@@ -164,7 +164,7 @@ class Kegs extends React.Component {
     this.setState({
       newKeg: new Keg()
     });
-    this.setState({ show: false });
+    this.setState({ addModalShow: false });
   }
 
   handleChange(event) {
@@ -180,12 +180,12 @@ class Kegs extends React.Component {
     this.setState({ kegList: newKegList });
   }
 
-  showModal() {
-    this.setState({ show: true });
+  showAddModal() {
+    this.setState({ addModalShow: true });
   }
 
-  hideModal() {
-    this.setState({ show: false });
+  hideAddModal() {
+    this.setState({ addModalShow: false });
   }
 }
 
