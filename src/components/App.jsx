@@ -28,7 +28,8 @@ class App extends React.Component {
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.redirectToTarget = this.redirectToTarget.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
+    // this.redirectToLogin = this.redirectToLogin.bind(this);
   }
 
   handleLogin(event) {
@@ -40,7 +41,7 @@ class App extends React.Component {
     );
     if (filterById.length == 0) {
       this.setState({ accessDenied: true });
-      console.log("Login failed");
+      console.log("Id not match");
     } else if (filterById[0].password == this.state.loginCredential.password) {
       this.setState({
         accessDenied: false,
@@ -50,28 +51,48 @@ class App extends React.Component {
       });
     } else {
       this.setState({ accessDenied: true });
-      console.log("Login failed");
+      console.log("password not match");
     }
   }
 
   handleChange(event) {
-    console.log(event.currentTarget.value);
-    console.log(event.currentTarget.id);
     let loginCredential = Object.assign({}, this.state.loginCredential);
     loginCredential[event.currentTarget.id] = event.currentTarget.value;
     this.setState({ loginCredential: loginCredential });
-    console.log(this.state.loginCredential);
   }
 
-  redirectToTarget(target) {
-    console.log("redirect");
-    return <Redirect to={"/" + target} />;
+  handleLogOut() {
+    this.setState({
+      currentUser: new User(),
+      loggedIn: false,
+      accessDenied: null
+    });
   }
+
+  // redirectToLogin() {
+  //   console.log("redirect");
+  //   return (
+  //     <Redirect
+  //       render={props => (
+  //         <Login
+  //           {...props}
+  //           onSubmit={e => this.handleLogin(e)}
+  //           onChange={e => this.handleChange(e)}
+  //           loginCredential={this.state.loginCredential}
+  //           loggedIn={this.state.loggedIn}
+  //           accessDenied={this.state.accessDenied}
+  //         />
+  //       )}
+  //     />
+  //   );
+  // }
 
   render() {
     return (
       <div>
         <NavBar
+          logIn={this.redirectToLogin}
+          logOut={this.handleLogOut}
           loggedIn={this.state.loggedIn}
           currentUser={this.state.currentUser}
         />

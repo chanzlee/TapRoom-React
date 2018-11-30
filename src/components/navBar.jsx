@@ -1,7 +1,15 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = props => {
+  const {
+    loggedIn,
+    currentUser,
+    logOut,
+    loginCredential,
+    accessDenied,
+    logIn
+  } = props;
   return (
     //Import bootstrap format
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,8 +38,17 @@ const NavBar = () => {
           <NavLink className="nav-item nav-link" to="/employee">
             Employee
           </NavLink>
-          <NavLink className="nav-item nav-link" to="/login">
-            Login
+          {loggedIn ? (
+            <NavLink className="nav-item nav-link" onClick={logOut} to="/store">
+              Logout
+            </NavLink>
+          ) : (
+            <NavLink className="nav-item nav-link" to="/login">
+              Login
+            </NavLink>
+          )}
+          <NavLink className="nav-item nav-link disabled ml-5" to="/login">
+            Hello, {currentUser.name ? currentUser.name : "Visitor"}
           </NavLink>
         </div>
       </div>
