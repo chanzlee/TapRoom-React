@@ -42,9 +42,13 @@ class Kegs extends React.Component {
               <th>Price</th>
               <th>Remaining</th>
               <th>Like</th>
-              <th />
-              <th />
-              <th />
+              {this.props.isAdmin === true ? (
+                <span>
+                  <th />
+                  <th />
+                  <th />
+                </span>
+              ) : null}
             </tr>
           </thead>
 
@@ -95,26 +99,32 @@ class Kegs extends React.Component {
                     onClick={() => this.handleLike(keg)}
                   />
                 </td>
-                <td>
-                  <Sell
-                    product="pint"
-                    onClick={() => this.handleSell(keg, 1)}
-                  />
-                </td>
-                <td>
-                  <Sell
-                    product="growler"
-                    onClick={() => this.handleSell(keg, 2)}
-                  />
-                </td>
-                <td>
-                  <button
-                    onClick={() => this.showDeleteModal(keg)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    Delete
-                  </button>
-                </td>
+
+                {/* Hide admin functionality */}
+                {this.props.isAdmin === true ? (
+                  <span>
+                    <td>
+                      <Sell
+                        product="pint"
+                        onClick={() => this.handleSell(keg, 1)}
+                      />
+                    </td>
+                    <td>
+                      <Sell
+                        product="growler"
+                        onClick={() => this.handleSell(keg, 2)}
+                      />
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => this.showDeleteModal(keg)}
+                        className="btn btn-danger btn-sm"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </span>
+                ) : null}
               </tr>
             ))}
           </tbody>
@@ -144,15 +154,16 @@ class Kegs extends React.Component {
             />
           }
         />
-
-        <button
-          style={{ float: "right" }}
-          className="btn btn-info btn-sm mr-3"
-          type="button"
-          onClick={this.showAddModal}
-        >
-          Add New Keg
-        </button>
+        {this.props.isAdmin === true ? (
+          <button
+            style={{ float: "right" }}
+            className="btn btn-info btn-sm mr-3"
+            type="button"
+            onClick={this.showAddModal}
+          >
+            Add New Keg
+          </button>
+        ) : null}
       </div>
     );
   }

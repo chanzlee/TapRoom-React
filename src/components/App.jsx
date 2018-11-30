@@ -81,7 +81,12 @@ class App extends React.Component {
         <div className="container">
           <Switch>
             <Route path="/store" component={Store} />
-            <Route path="/admin" component={Admin} />
+            <Route
+              path="/admin"
+              render={props => (
+                <Admin {...props} currentUser={this.state.currentUser} />
+              )}
+            />
             <Route path="/employee" component={Employee} />
             <Route
               path="/login"
