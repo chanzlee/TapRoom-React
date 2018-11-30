@@ -41,6 +41,9 @@ const NavBar = props => {
               Login
             </NavLink>
           )}
+          <NavLink className="nav-item nav-link" to="/signup">
+            Sign Up
+          </NavLink>
           <NavLink className="nav-item nav-link disabled ml-5" to="/login">
             Hello, {currentUser.name !== null ? currentUser.name : "Visitor"}
           </NavLink>

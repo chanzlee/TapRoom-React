@@ -7,6 +7,7 @@ import NavBar from "./navbar";
 import Store from "./store";
 import Employee from "./employee";
 import NotFound from "./notFound";
+import NotAllowed from "./notAllowed";
 import Login from "./login";
 import User from "../model/user";
 import Credential from "../model/credential";
@@ -152,6 +153,7 @@ class App extends React.Component {
                 />
               )}
             />
+            <Route path="/not-allowed" component={NotAllowed} />
             <Route path="/not-found" component={NotFound} />
             {/* <Route exact path="/" component={Home} /> */}
             <Redirect exact from="/" to="/store" />
