@@ -16,7 +16,8 @@ const Sell = props => {
 };
 
 Sell.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  product: PropTypes.string
 };
 
 export default Sell;

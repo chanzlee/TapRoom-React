@@ -1,15 +1,9 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const NavBar = props => {
-  const {
-    loggedIn,
-    currentUser,
-    logOut,
-    loginCredential,
-    accessDenied,
-    logIn
-  } = props;
+  const { loggedIn, currentUser, logOut } = props;
   return (
     //Import bootstrap format
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,7 +33,7 @@ const NavBar = props => {
             Employee
           </NavLink>
           {loggedIn ? (
-            <NavLink className="nav-item nav-link" onClick={logOut} to="/store">
+            <NavLink className="nav-item nav-link" onClick={logOut} to="/login">
               Logout
             </NavLink>
           ) : (
@@ -54,6 +48,12 @@ const NavBar = props => {
       </div>
     </nav>
   );
+};
+
+NavBar.propTypes = {
+  loggedIn: PropTypes.bool,
+  currentUser: PropTypes.object,
+  logOut: PropTypes.func.isRequired
 };
 
 export default NavBar;

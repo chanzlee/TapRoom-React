@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const Modal = props => {
   const showHideClassName = props.show
@@ -36,6 +36,13 @@ const Modal = props => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  show: PropTypes.bool,
+  title: PropTypes.string,
+  modalTarget: PropTypes.element,
+  handleClose: PropTypes.func.isRequired
 };
 
 export default Modal;

@@ -10,7 +10,7 @@ import NotFound from "./notFound";
 import Login from "./login";
 import User from "../model/user";
 import Credential from "../model/credential";
-import { getUserList } from "../services/userService";
+import { getUserList } from "../pseudo-backend/userService";
 
 /*
   import { Link } from 'react-router-dom';
@@ -34,14 +34,12 @@ class App extends React.Component {
 
   handleLogin(event) {
     event.preventDefault();
-    console.log(this.state.loginCredential);
     let userListCopy = this.state.userList.slice();
     let filterById = userListCopy.filter(
       user => user.id == this.state.loginCredential.id
     );
     if (filterById.length == 0) {
       this.setState({ accessDenied: true });
-      console.log("Id not match");
     } else if (filterById[0].password == this.state.loginCredential.password) {
       this.setState({
         accessDenied: false,
@@ -51,7 +49,6 @@ class App extends React.Component {
       });
     } else {
       this.setState({ accessDenied: true });
-      console.log("password not match");
     }
   }
 
@@ -68,24 +65,6 @@ class App extends React.Component {
       accessDenied: null
     });
   }
-
-  // redirectToLogin() {
-  //   console.log("redirect");
-  //   return (
-  //     <Redirect
-  //       render={props => (
-  //         <Login
-  //           {...props}
-  //           onSubmit={e => this.handleLogin(e)}
-  //           onChange={e => this.handleChange(e)}
-  //           loginCredential={this.state.loginCredential}
-  //           loggedIn={this.state.loggedIn}
-  //           accessDenied={this.state.accessDenied}
-  //         />
-  //       )}
-  //     />
-  //   );
-  // }
 
   render() {
     return (

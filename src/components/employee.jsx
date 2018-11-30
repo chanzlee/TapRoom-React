@@ -1,5 +1,5 @@
 import React from "react";
-import { getEmployeeList } from "../services/employeeService";
+import { getEmployeeList } from "../pseudo-backend/employeeService";
 import { Link } from "react-router-dom";
 
 const Employee = () => {

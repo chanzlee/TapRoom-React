@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "../components/common/input";
 import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Login = props => {
   const { loginCredential, accessDenied } = props;
@@ -41,6 +42,13 @@ const Login = props => {
       )}
     </div>
   );
+};
+
+Login.propTypes = {
+  accessDenied: PropTypes.bool,
+  loginCredential: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default Login;

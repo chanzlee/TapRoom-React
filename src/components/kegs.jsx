@@ -1,5 +1,5 @@
 import React from "react";
-import { getKegList } from "../services/kegService";
+import { getKegList } from "../pseudo-backend/kegService";
 import Like from "./common/like";
 import Sell from "./common/sell";
 import Modal from "./common/modal";
