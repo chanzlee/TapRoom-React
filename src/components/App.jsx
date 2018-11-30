@@ -21,18 +21,18 @@ class App extends React.Component {
     super(props);
     this.state = {
       userList: getUserList(),
-      loginCredential: { id: "", password: "" },
+      loginCredential: new Credential(),
       currentUser: new User(),
       loggedIn: false,
-      accessDenied: false
+      accessDenied: null
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.redirectToTarget = this.redirectToTarget.bind(this);
   }
 
   handleLogin(event) {
     event.preventDefault();
-    console.log("login clicked");
     console.log(this.state.loginCredential);
     let userListCopy = this.state.userList.slice();
     let filterById = userListCopy.filter(
@@ -46,9 +46,8 @@ class App extends React.Component {
         accessDenied: false,
         loggedIn: true,
         currentUser: filterById[0],
-        loginCredential: { id: "", password: "" }
+        loginCredential: new Credential()
       });
-      return <Redirect to="/store" />;
     } else {
       this.setState({ accessDenied: true });
       console.log("Login failed");
@@ -64,10 +63,18 @@ class App extends React.Component {
     console.log(this.state.loginCredential);
   }
 
+  redirectToTarget(target) {
+    console.log("redirect");
+    return <Redirect to={"/" + target} />;
+  }
+
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar
+          loggedIn={this.state.loggedIn}
+          currentUser={this.state.currentUser}
+        />
         <div className="jumbotron">
           <h1>SeaTap</h1>
         </div>
@@ -84,6 +91,8 @@ class App extends React.Component {
                   onSubmit={e => this.handleLogin(e)}
                   onChange={e => this.handleChange(e)}
                   loginCredential={this.state.loginCredential}
+                  loggedIn={this.state.loggedIn}
+                  accessDenied={this.state.accessDenied}
                 />
               )}
             />

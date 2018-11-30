@@ -1,29 +1,27 @@
 import React from "react";
+import Input from "../components/common/input";
+import { Redirect } from "react-router-dom";
 
 const Login = props => {
-  const { id, password } = props.loginCredential;
+  const { loginCredential, accessDenied } = props;
   return (
     <div>
+      (accessDenied)? null: <Redirect to="/store" />
       <h1>Login</h1>
       <form onSubmit={props.onSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Username</label>
-          <input
-            type="text"
-            id="id"
-            name="id"
-            value={id}
-            onChange={props.onChange}
-            className="form-control"
-          />
-        </div>
+        <Input
+          name="username"
+          label="Username"
+          value={loginCredential.id}
+          onChange={props.onChange}
+        />
         <div className="form-group">
           <label htmlFor="brewer">Password</label>
           <input
             type="text"
             id="password"
             name="password"
-            value={password}
+            value={loginCredential.password}
             onChange={props.onChange}
             className="form-control"
           />
