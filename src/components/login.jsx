@@ -14,22 +14,17 @@ const Login = props => {
           <h1>Login</h1>
           <form onSubmit={props.onSubmit}>
             <Input
-              name="username"
-              label="Username"
+              name="id"
+              label="Id"
               value={loginCredential.id}
               onChange={props.onChange}
             />
-            <div className="form-group">
-              <label htmlFor="brewer">Password</label>
-              <input
-                type="text"
-                id="password"
-                name="password"
-                value={loginCredential.password}
-                onChange={props.onChange}
-                className="form-control"
-              />
-            </div>
+            <Input
+              name="password"
+              label="Password"
+              value={loginCredential.password}
+              onChange={props.onChange}
+            />
             <button
               style={{ float: "right" }}
               type="submit"
@@ -47,7 +42,7 @@ const Login = props => {
 Login.propTypes = {
   accessDenied: PropTypes.bool,
   loginCredential: PropTypes.object,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   onSubmit: PropTypes.func.isRequired
 };
 

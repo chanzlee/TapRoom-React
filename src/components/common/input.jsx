@@ -7,8 +7,8 @@ const Input = ({ name, label, value, onChange }) => {
       <label htmlFor={name}>{label}</label>
       <input
         type="text"
-        id="id"
-        name="id"
+        id={name}
+        name={name}
         value={value}
         onChange={onChange}
         className="form-control"
