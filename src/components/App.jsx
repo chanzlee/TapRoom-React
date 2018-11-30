@@ -11,6 +11,7 @@ import Login from "./login";
 import User from "../model/user";
 import Credential from "../model/credential";
 import { getUserList } from "../pseudo-backend/userService";
+import SignUp from "./signUp";
 
 /*
   import { Link } from 'react-router-dom';
@@ -24,11 +25,15 @@ class App extends React.Component {
       loginCredential: new Credential(),
       currentUser: new User(),
       loggedIn: false,
-      accessDenied: null
+      accessDenied: null,
+      signUpCredential: new User(),
+      signUpFail: null
     };
     this.handleLogin = this.handleLogin.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleLoginChange = this.handleLoginChange.bind(this);
+    this.handleSignUpChange = this.handleSignUpChange.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
     // this.redirectToLogin = this.redirectToLogin.bind(this);
   }
 
@@ -52,7 +57,7 @@ class App extends React.Component {
     }
   }
 
-  handleChange(event) {
+  handleLoginChange(event) {
     let loginCredential = Object.assign({}, this.state.loginCredential);
     loginCredential[event.currentTarget.id] = event.currentTarget.value;
     this.setState({ loginCredential: loginCredential });
@@ -64,6 +69,41 @@ class App extends React.Component {
       loggedIn: false,
       accessDenied: null
     });
+  }
+
+  handleSignUp(event) {
+    event.preventDefault();
+    let userListCopy = this.state.userList.slice();
+    let filterById = userListCopy.filter(
+      user => user.id == this.state.signUpCredential.id
+    );
+    if (filterById.length != 0) {
+      this.setState({ signUpFail: true });
+      console.log("existing Id");
+    } else {
+      userListCopy.push(
+        new User(
+          this.state.signUpCredential.id,
+          this.state.signUpCredential.name,
+          this.state.signUpCredential.password
+        )
+      );
+
+      this.setState({
+        userList: userListCopy,
+        signUpFail: false,
+        loggedIn: null,
+        currentUser: new User(),
+        signUpCredential: new User(),
+        loginCredential: new Credential()
+      });
+    }
+  }
+
+  handleSignUpChange(event) {
+    let signUpCredential = Object.assign({}, this.state.signUpCredential);
+    signUpCredential[event.currentTarget.id] = event.currentTarget.value;
+    this.setState({ signUpCredential: signUpCredential });
   }
 
   render() {
@@ -94,10 +134,21 @@ class App extends React.Component {
                 <Login
                   {...props}
                   onSubmit={e => this.handleLogin(e)}
-                  onChange={e => this.handleChange(e)}
+                  onChange={e => this.handleLoginChange(e)}
                   loginCredential={this.state.loginCredential}
                   loggedIn={this.state.loggedIn}
                   accessDenied={this.state.accessDenied}
+                />
+              )}
+            />
+            <Route
+              path="/signup"
+              render={() => (
+                <SignUp
+                  onSubmit={e => this.handleSignUp(e)}
+                  onChange={e => this.handleSignUpChange(e)}
+                  signUpCredential={this.state.signUpCredential}
+                  signUpFail={this.state.signUpFail}
                 />
               )}
             />

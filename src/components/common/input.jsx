@@ -21,6 +21,7 @@ Input.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   value: PropTypes.string,
+  type: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };
 

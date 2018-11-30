@@ -1,9 +1,9 @@
 export default class User {
-  constructor() {
-    this.id = "";
-    this.name = "";
+  constructor(id, name, password) {
+    this.id = id || "";
+    this.name = name || "";
     this.admin = false;
-    this.membership = "";
-    this.password = "";
+    this.membership = "bronze";
+    this.password = password || "";
   }
 }
