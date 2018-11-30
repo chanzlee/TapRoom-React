@@ -1,6 +1,6 @@
 # TapRoom
 
-#### _11/16/2018_, By Chan Lee
+#### _11/30/2018_, By Chan Lee
 
 ## Description
 
@@ -10,7 +10,9 @@ Static website for the bar to to sell & manage kegs using React.
 
 - Website shows list/menu of all available kegs. For each keg, I need to see its name, brewer, price, and alcoholContent
 - It responsively updates how many pints are left in a keg
-- Admin can add new keg to add it to the list or edit a keg's properties after entering them.
+- User can login/logout through the router, but not allowed to see admin page if they are not admins.
+- Admin can add new keg to add it to the list, delete from the list and edit a keg's properties after entering them.
+- If admin add or delete keg, there will be a modal to render the component inside.
 - When admin click a sell button, it will decrease the number of pints left by 1.
 - If there are less than 10 pints left, text color will changed into red so admin can be ready to change them.
 - Kegs prices are color-coded for easy readability, based on their price (greater than \$7) or the particular style of beer or kombucha.
@@ -61,6 +63,8 @@ Static website for the bar to to sell & manage kegs using React.
 
 - Since Angular developed on MVC while React only has View of MVC, react becomes verbose as it became hard to incorporate Model and Component.
 
+- Regarding forms, two way binding is also possible by onChange property, but should careful about only source of truth.
+
 ## Components
 
 - Navigation bar
@@ -69,7 +73,8 @@ Static website for the bar to to sell & manage kegs using React.
 - newKegForm
 - Admin
 - Employee
-- Common component: Like/ Modal/ Sell
+- Login
+- Common component: Like/ Modal/ Sell/ Input
 
 ## Technologies Used
 
