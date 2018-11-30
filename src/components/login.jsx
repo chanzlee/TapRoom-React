@@ -10,7 +10,7 @@ const Login = props => {
       {accessDenied === false ? (
         <Redirect to="/store" />
       ) : (
-        <div>
+        <div className="mx-auto d-block w-50">
           <h1>Login</h1>
           <form onSubmit={props.onSubmit}>
             <Input
@@ -23,6 +23,7 @@ const Login = props => {
               name="password"
               label="Password"
               value={loginCredential.password}
+              type="password"
               onChange={props.onChange}
             />
             <button
