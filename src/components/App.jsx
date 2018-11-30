@@ -48,7 +48,7 @@ class App extends React.Component {
         currentUser: filterById[0],
         loginCredential: { id: "", password: "" }
       });
-      console.log("Login successful");
+      return <Redirect to="/store" />;
     } else {
       this.setState({ accessDenied: true });
       console.log("Login failed");
@@ -58,8 +58,8 @@ class App extends React.Component {
   handleChange(event) {
     console.log(event.currentTarget.value);
     console.log(event.currentTarget.id);
-    let loginCredential = this.state.loginCredential;
-    loginCredential[event.currentTarget.id] += event.currentTarget.value;
+    let loginCredential = Object.assign({}, this.state.loginCredential);
+    loginCredential[event.currentTarget.id] = event.currentTarget.value;
     this.setState({ loginCredential: loginCredential });
     console.log(this.state.loginCredential);
   }
@@ -83,7 +83,7 @@ class App extends React.Component {
                   {...props}
                   onSubmit={e => this.handleLogin(e)}
                   onChange={e => this.handleChange(e)}
-                  currentUser={this.state.currentUser}
+                  loginCredential={this.state.loginCredential}
                 />
               )}
             />

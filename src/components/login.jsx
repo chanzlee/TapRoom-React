@@ -1,7 +1,7 @@
 import React from "react";
 
 const Login = props => {
-  const { id, password } = props.currentUser;
+  const { id, password } = props.loginCredential;
   return (
     <div>
       <h1>Login</h1>
@@ -11,6 +11,7 @@ const Login = props => {
           <input
             type="text"
             id="id"
+            name="id"
             value={id}
             onChange={props.onChange}
             className="form-control"
@@ -21,6 +22,7 @@ const Login = props => {
           <input
             type="text"
             id="password"
+            name="password"
             value={password}
             onChange={props.onChange}
             className="form-control"
