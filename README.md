@@ -10,7 +10,7 @@ Static website for the bar to to sell & manage kegs using React.
 
 - Website shows list/menu of all available kegs. For each keg, I need to see its name, brewer, price, and alcoholContent
 - It responsively updates how many pints are left in a keg
-- User can login/logout through the router, but not allowed to see admin page if they are not admins.
+- User can sign up/ login/ logout through the router, but not allowed to see admin page if they are not admins.
 - Admin can add new keg to add it to the list, delete from the list and edit a keg's properties after entering them.
 - If admin add or delete keg, there will be a modal to render the component inside.
 - When admin click a sell button, it will decrease the number of pints left by 1.
@@ -48,6 +48,8 @@ Static website for the bar to to sell & manage kegs using React.
 - Should Keg be component or just a object from the database?
 
 - Which dependencies needs to be injected to use font-awesome?
+
+- How to pass React elements as props to other components?
 
 2. Difference between Angular and React
 

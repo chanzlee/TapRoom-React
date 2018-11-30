@@ -30,7 +30,7 @@ class SignUp extends React.Component {
         {signUpFail === false ? (
           <div>
             <Modal
-              title="Delete Keg"
+              title="Sign Up"
               show={this.state.showSignUpModal}
               handleClose={this.hideSignUpModal}
               modalTarget={
