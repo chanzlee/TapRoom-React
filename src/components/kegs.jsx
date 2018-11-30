@@ -6,6 +6,7 @@ import Modal from "./common/modal";
 import NewKegForm from "./newKegForm";
 import DeleteConfirm from "./DeleteConfirm";
 import Keg from "../model/keg";
+import PropTypes from "prop-types";
 
 class Kegs extends React.Component {
   constructor(props) {
@@ -226,5 +227,9 @@ class Kegs extends React.Component {
     this.setState({ deleteModalShow: false });
   }
 }
+
+Kegs.propTypes = {
+  isAdmin: PropTypes.bool
+};
 
 export default Kegs;
