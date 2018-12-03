@@ -6,6 +6,10 @@
 
 Static website for the bar to to sell & manage kegs using React.
 
+## Structure
+
+![Screenshot](structure.png)
+
 ## Specification
 
 - Website shows list/menu of all available kegs. For each keg, I need to see its name, brewer, price, and alcoholContent
