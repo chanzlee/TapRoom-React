@@ -34,7 +34,7 @@ class Kegs extends React.Component {
   render() {
     return (
       <div>
-        <table className="table">
+        <table className="table table-striped table-dark">
           <thead>
             <tr>
               <th>Name</th>

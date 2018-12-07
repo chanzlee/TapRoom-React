@@ -13,6 +13,7 @@ import User from "../model/user";
 import Credential from "../model/credential";
 import { getUserList } from "../pseudo-backend/userService";
 import SignUp from "./signUp";
+import title from "../image/title.jpg";
 
 /*
   import { Link } from 'react-router-dom';
@@ -110,15 +111,27 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <style jsx>
+          {`
+            .background {
+              color: white;
+              background: #ffffff url("${title}") no-repeat fixed;
+              opacity: 0.6;
+              position: absolute;
+              z-index: -1;
+            }
+          `}
+        </style>
         <NavBar
           logIn={this.redirectToLogin}
           logOut={this.handleLogOut}
           loggedIn={this.state.loggedIn}
           currentUser={this.state.currentUser}
         />
-        <div className="jumbotron">
+        <div className="jumbotron title">
           <h1>SeaTap</h1>
         </div>
+        <img src={title} className="background" alt="background" />
         <div className="container">
           <Switch>
             <Route path="/store" component={Store} />
